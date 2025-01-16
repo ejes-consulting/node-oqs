@@ -13,7 +13,7 @@ Returns an array of available key encapsulation mechanisms supported by liboqs.
 ##### Usage
 
 ```javascript
-const oqs = require('./build/Release/addon');
+const oqs = require('./node-oqs');
 
 console.log(oqs.getKEMs());
 /* should output something like this
@@ -53,7 +53,8 @@ console.log(oqs.getKEMs());
 #### generateKEMKeys(type:string)
 Generates KEM algorithm returns an object with privateKey and publicKey Buffers
 ###### Usage
-`const oqs=require('oqs');
+```javascript
+const oqs = require('./node-oqs');
 
 console.log(oqs.generateKEMKeys('BIKE-L1'));
 /* should output something like this:
@@ -62,7 +63,8 @@ console.log(oqs.generateKEMKeys('BIKE-L1'));
   privateKey: <Buffer 4d 11 00 00 8b 12 00 00 a5 21 00 00 a2 05 00 00 86 0a 00 00 0d 2c 00 00 86 25 00 00 83 23 00 00 3a 08 00 00 08 0c 00 00 66 0b 00 00 2a 10 00 00 ce 1d ... 5173 more bytes>
 }
  */
-`
+```
+
 #### createKEM(type:string)
 Returns an object with encapsulate and decapsulate methods
 
@@ -73,7 +75,8 @@ returns an object with cipherText:Buffer and sharedSecret:Buffer
 returns a sharedSecret Buffer
 
 ###### Usage
-`const oqs=require('oqs');
+```javascript
+const oqs = require('./node-oqs');
 
 const BIKEkeys=oqs.generateKEMKeys('BIKE-L1');
 const KEM=oqs.createKEM('BIKE-L1');
@@ -84,12 +87,14 @@ console.log(KEM.encpasulate(BIKEkeys.publicKey));
   sharedSecret: <Buffer 3c 37 c6 4d 51 d7 f9 53 67 88 ad 67 3e 99 ff 32 22 02 ce 26 32 ab 82 4a fc f9 8c 5e 61 be 54 91>
 }
 */
-`
+```
+
 ## Signing
 ### getSigningMethods
 returns an array of available signature algorithms
 ###### Usage
-`const oqs=require('oqs');
+```javascript
+const oqs = require('./node-oqs');
 
 console.log(oqs.getSigningMethods());
 /* should output something like this:
@@ -139,12 +144,13 @@ console.log(oqs.getSigningMethods());
   'cross-rsdpg-256-fast',
   'cross-rsdpg-256-small'
 ]*/
-`
+```
 
 #### generateSigningKeys(type:string)
 returns an object with privateKey and publicKey Buffers
 ###### Usage
-`const oqs=require('oqs');
+```javascript
+const oqs = require('./node-oqs');
 
 console.log(oqs.generateSigningKeys('Dilithium2'));
 /* should output something like this:
@@ -152,7 +158,7 @@ console.log(oqs.generateSigningKeys('Dilithium2'));
   publicKey: <Buffer 09 83 0a 15 a9 a2 92 24 18 0d 1e bc 04 a4 df f9 76 68 78 10 2d b0 8f ac 8e 9b 13 bc 11 74 8c 00 77 65 d5 12 35 1b e7 f5 ef 86 28 7a 8d 2b 86 f7 bb 3d ... 1262 more bytes>,
   privateKey: <Buffer 09 83 0a 15 a9 a2 92 24 18 0d 1e bc 04 a4 df f9 76 68 78 10 2d b0 8f ac 8e 9b 13 bc 11 74 8c 00 73 02 ec 70 1d 7c 41 84 af a9 5c f5 42 bc 8f ce ec 69 ... 2478 more bytes>
 } */
-`
+```
 
 #### createSign
 returns a writable stream with update and sign methods; it's pretty close to the crypto.createSign functions
@@ -161,7 +167,8 @@ updates the message to be signed
 ##### strm.sign(privateKey:Buffer,encoding:string)
 returns a signature Buffer
 ###### Usage
-`const oqs=require('oqs');
+```javascript
+const oqs=require('oqs');
 let message='Hello Bob!';
 let privateKey=Buffer.from(base64PrivateKey,'base64');
 let sign=oqs.createSign('Dilithium2');
@@ -172,7 +179,7 @@ console.log('signature',signature);
 /* should output something like this:
 signature <Buffer 35 7f d4 78 3c 76 2b fe 97 67 fd af 8d 6d c9 98 8f 9a eb d9 7f 11 6b d9 9f be 36 dd 08 03 20 9a 6b d4 c0 60 0e b5 d5 6e 0c 93 e4 05 9a 65 c8 b2 1e 60 ... 2370 more bytes>
  */
-`
+```
 
 #### createVerify
 returns a writable stream with update and verify methods
@@ -180,7 +187,9 @@ returns a writable stream with update and verify methods
 updates the message to be verified
 ##### strm.verify(publicKey:Buffer,signature:Buffer,encoding:string)
 returns a boolean
-`const oqs=require('oqs');
+```javascript
+const oqs = require('./node-oqs');
+
 let publicKey=Buffer.from(base64PublicKey,'base64'),
 	signature=Buffer.from(base64Signature,'base64');
 let verify=oqs.createVerify('Dilithium2');
@@ -189,6 +198,6 @@ console.log(verify.verify(publicKey,signature))
 /* assuming everything went okay, you should receive:
 true
 */
-`
+```
 
 ###### eof
