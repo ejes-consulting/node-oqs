@@ -1,15 +1,6 @@
 # 
 liboqs node binding
 
-## Supported Algorithms
-Algorithm Type			Scheme						Security Basis				Status
-KEM						Kyber						Lattice						Standardized
-						BIKE, FrodoKEM, SIKE		Code, LWE, Isogeny			Alternate
-						Classic McEliece, NTRU		Code, Lattice				Alternate
-Signatures				Dilithium, Falcon			Lattice						Standardized
-						SPHINCS+					Hash-based					Alternate
-Other/Experimental		Rainbow, qTESLA, HQC		Multivariate, Lattice		Experimental
-
 ## API
 
 ### Key Exchange
