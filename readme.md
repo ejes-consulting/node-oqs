@@ -1,15 +1,19 @@
-# 
-liboqs node binding
+# liboqs Node.js Binding
+
+This project provides Node.js bindings for the [liboqs](https://github.com/open-quantum-safe/liboqs) library, enabling the use of quantum-safe cryptographic algorithms in Node.js applications.
 
 ## API
 
-### Key Exchange
+### Key Encapsulation Mechanisms (KEM)
 
 #### getKEMs
-Returns an array of available key encapsulation mechanisms
 
-###### Usage
-`const oqs=require('oqs');
+Returns an array of available key encapsulation mechanisms supported by liboqs.
+
+##### Usage
+
+```javascript
+const oqs = require('./build/Release/addon');
 
 console.log(oqs.getKEMs());
 /* should output something like this
@@ -44,7 +48,8 @@ console.log(oqs.getKEMs());
   'FrodoKEM-1344-AES',
   'FrodoKEM-1344-SHAKE'
 ] */
-`
+```
+
 #### generateKEMKeys(type:string)
 Generates KEM algorithm returns an object with privateKey and publicKey Buffers
 ###### Usage
