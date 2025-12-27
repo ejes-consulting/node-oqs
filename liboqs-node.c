@@ -3,6 +3,6 @@
 
 extern napi_value Init(napi_env env, napi_value exports);
 
-NAPI_MODULE("liboqs.node", Init)
+NAPI_MODULE(liboqs_node, Init)
 
 /* eof */
