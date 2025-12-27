@@ -15,7 +15,7 @@ liboqs.node: liboqs-node.c src/binding.c src/kem.c src/signature.c $(LIBOQS_BUIL
 
 .PHONY: liboqs-init liboqs.a
 liboqs-init:
-	git submodule update --init -- "$(LIBOQS_DIR)"
+	git submodule add https://github.com/open-quantum-safe/liboqs.git $(LIBOQS_DIR)
 
 liboqs.a: $(LIBOQS_BUILD_DIR)/lib/liboqs.a
 
